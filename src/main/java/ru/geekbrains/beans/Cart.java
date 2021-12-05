@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 @Scope("prototype")
@@ -25,10 +26,11 @@ public class Cart {
     }
 
     public void addProductById(Integer id){
-        productRepository.findProductById(id).ifPresent(products);
+        productRepository.findProductById(id).ifPresent(products::add);
     }
     public void deleteProductById(Integer id) {
-        products.stream().filter(product -> product.getId().equals(id)).findFirst().ifPresent(products);
+
+        products.stream().filter(product -> Objects.equals(product.getId(), id)).findFirst().ifPresent(products::remove);
     }
 
 }

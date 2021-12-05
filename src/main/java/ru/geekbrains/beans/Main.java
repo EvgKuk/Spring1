@@ -22,8 +22,8 @@ public class Main {
         cart1.deleteProductById(3);
         cart1.deleteProductById(4);
 
-        System.out.println(cart1);
-        System.out.println(cart2);
+        System.out.println("First cart " + cart1);
+        System.out.println("Second cart " + cart2);
 
         context.close();
 
